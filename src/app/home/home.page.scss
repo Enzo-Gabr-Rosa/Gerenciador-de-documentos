@@ -25,3 +25,14 @@
 #container a {
   text-decoration: none;
 }
+
+.trash:hover{
+  cursor: pointer;
+}
+
+.toolbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}

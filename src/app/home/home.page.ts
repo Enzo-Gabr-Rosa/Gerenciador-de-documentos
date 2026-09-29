@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
-import { IonHeader, IonToolbar, IonGrid, IonRow, IonCol, IonIcon, IonTitle, IonContent } from '@ionic/angular';
+import { IonHeader, IonMenuButton, IonButtons, IonToolbar, IonGrid, IonRow, IonCol, IonIcon, IonTitle, IonContent } from '@ionic/angular';
 import { DocumentosService } from '../service/documentos.service';
 import { Documento } from '../modelos/documento.modelo';
 
@@ -10,7 +10,7 @@ import { firstValueFrom } from 'rxjs';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonGrid, IonRow, IonCol, IonIcon, IonTitle, IonContent],
+  imports: [IonHeader, IonMenuButton, IonButtons, IonToolbar, IonGrid, IonRow, IonCol, IonIcon, IonTitle, IonContent],
 })
 export class HomePage {
   private documetosService = inject(DocumentosService);
@@ -19,17 +19,17 @@ export class HomePage {
 
   constructor() {
     addIcons({ trashOutline })
-    this.obterDocumentos();
+    this.obterDocumentosAtivos();
   }
 
-  async obterDocumentos() {
+  async obterDocumentosAtivos() {
     console.log('Tentativa de requisição');
 
     this.documetosService.obterDocumetos().subscribe({
 
       next: async (documentos: any[]) => {
         
-        this.documentos = documentos;
+        this.documentos = documentos.filter((doc) => doc.ativo == true )
         
         console.log('Requisição concluída');
         console.log(this.documentos);
@@ -41,4 +41,27 @@ export class HomePage {
       }
     })
   }
+
+  async apagarDocumento(id: number){
+    console.log(`Deletando documento de id : ${id}`);
+    this.documetosService.apagarDocumento(id).subscribe({
+      next: (resultado) => {
+
+        console.log(resultado);
+        console.log("Documento apagado");
+        this.obterDocumentosAtivos()
+      },
+
+      error: (e) => {
+        
+        console.log(e);
+        console.log("Erro ao apagar o documento");
+        
+      }
+    })
+    
+    
+  }
+
+
 }

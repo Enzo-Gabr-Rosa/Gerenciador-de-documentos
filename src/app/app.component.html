@@ -1,3 +1,22 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="main">
+    
+    <ion-menu contentId="main">
+      <ion-header>
+        <ion-toolbar color="tertiary">
+          <ion-title>Menu de navegação</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <!--Menu Content-->  
+        <ion-buttons>
+          <ion-button [routerLink]="['/home']">Listagem</ion-button>
+          <ion-button [routerLink]="['/adicionar']">Adicionar documento</ion-button>
+        </ion-buttons>
+        </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main"></ion-router-outlet>
+
+  </ion-split-pane>
 </ion-app>

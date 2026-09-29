@@ -9,11 +9,17 @@ export class DocumentosService {
   private http = inject(HttpClient);
   private api = environment.api
 
-  constructor () {
+  constructor() {
   }
 
-  obterDocumetos(){
-    return this.http.get<Documento[]>(this.api+"/documentos");
+  obterDocumetos() {
+    return this.http.get<Documento[]>(this.api + "/documentos");
+  }
+
+  apagarDocumento(id: number) {
+    return this.http.patch<Documento>(`${this.api}/documentos/${id}`, {
+      ativo: false
+    })
   }
 
 }
