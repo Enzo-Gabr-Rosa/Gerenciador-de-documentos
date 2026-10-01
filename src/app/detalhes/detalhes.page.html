@@ -1,13 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>detalhes</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Detalhes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalhes</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item>ID: {{ documento.id }}</ion-item>
+    <ion-item>Nome: {{ documento.nome }}</ion-item>
+    <ion-item>Criador: {{ documento.criador }}</ion-item>
+    <ion-item>Data de criação: {{ documento.dataCriacao }}</ion-item>
+    <ngx-extended-pdf-viewer src="assets/pdfs/teste_2.pdf" height="80vh">
+    </ngx-extended-pdf-viewer>
+  </ion-list>
 </ion-content>

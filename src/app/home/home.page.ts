@@ -3,6 +3,7 @@ import { IonHeader, IonMenuButton, IonButtons, IonToolbar, IonGrid, IonRow, IonC
 import { DocumentosService } from '../service/documentos.service';
 import { Documento } from '../modelos/documento.modelo';
 import { RouterLink } from '@angular/router';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer'; 
 
 import { addIcons } from 'ionicons';
 import { expandOutline } from 'ionicons/icons';
@@ -10,7 +11,7 @@ import { expandOutline } from 'ionicons/icons';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonMenuButton, IonButtons, IonToolbar, IonGrid, IonRow, IonCol, IonIcon, IonTitle, IonContent, RouterLink],
+  imports: [IonHeader, IonMenuButton, IonButtons, IonToolbar, IonGrid, IonRow, IonCol, IonIcon, IonTitle, IonContent, RouterLink, NgxExtendedPdfViewerModule],
 })
 export class HomePage {
   private documetosService = inject(DocumentosService);

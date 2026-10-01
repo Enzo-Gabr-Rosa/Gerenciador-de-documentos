@@ -2,6 +2,7 @@ import { inject, Service } from '@angular/core';
 import { Documento } from '../modelos/documento.modelo';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { retry } from 'rxjs';
 
 @Service()
 export class DocumentosService {
@@ -22,4 +23,9 @@ export class DocumentosService {
     })
   }
 
+  obterDocumento(id: number){
+    
+    return this.http.get<Documento>(`${this.api}/documentos/${id}`)
+
+  }
 }
