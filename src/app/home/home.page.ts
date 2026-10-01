@@ -2,15 +2,15 @@ import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { IonHeader, IonMenuButton, IonButtons, IonToolbar, IonGrid, IonRow, IonCol, IonIcon, IonTitle, IonContent } from '@ionic/angular';
 import { DocumentosService } from '../service/documentos.service';
 import { Documento } from '../modelos/documento.modelo';
+import { RouterLink } from '@angular/router';
 
 import { addIcons } from 'ionicons';
-import { trashOutline } from 'ionicons/icons';
-import { firstValueFrom } from 'rxjs';
+import { expandOutline } from 'ionicons/icons';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonMenuButton, IonButtons, IonToolbar, IonGrid, IonRow, IonCol, IonIcon, IonTitle, IonContent],
+  imports: [IonHeader, IonMenuButton, IonButtons, IonToolbar, IonGrid, IonRow, IonCol, IonIcon, IonTitle, IonContent, RouterLink],
 })
 export class HomePage {
   private documetosService = inject(DocumentosService);
@@ -18,7 +18,7 @@ export class HomePage {
   protected documentos: Documento[] = [];
 
   constructor() {
-    addIcons({ trashOutline })
+    addIcons({ expandOutline })
     this.obterDocumentosAtivos();
   }
 

@@ -32,7 +32,7 @@
             <ion-col>{{ doc.criador }}</ion-col>
             <ion-col>{{ doc.dataCriacao }}</ion-col>
             <ion-col>Imagem</ion-col>
-            <ion-col><ion-icon class="trash" name="trash-outline" (click)="apagarDocumento(doc.id)"></ion-icon></ion-col>
+            <ion-col><ion-icon class="trash" name="expand-outline" [routerLink]="['/detalhes', doc.id]"></ion-icon></ion-col>
           </ion-row>
       }
     </ion-grid>
