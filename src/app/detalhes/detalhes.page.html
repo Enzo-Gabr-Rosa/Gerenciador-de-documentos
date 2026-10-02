@@ -9,11 +9,14 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
+    <ngx-extended-pdf-viewer src="assets/pdfs/teste_2.pdf" height="65vh" (pagesLoaded)="paginasCarregadas($event)"></ngx-extended-pdf-viewer>
+    <ion-item>
+      Data de criação:
+      {{ documento.dataCriacao | date:'HH:mm - dd/MM/yyyy' }}
+    </ion-item>
     <ion-item>ID: {{ documento.id }}</ion-item>
     <ion-item>Nome: {{ documento.nome }}</ion-item>
     <ion-item>Criador: {{ documento.criador }}</ion-item>
     <ion-item>Data de criação: {{ documento.dataCriacao }}</ion-item>
-    <ngx-extended-pdf-viewer src="assets/pdfs/teste_2.pdf" height="80vh">
-    </ngx-extended-pdf-viewer>
   </ion-list>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonHeader, IonMenuButton, IonList, IonItem, IonButtons, IonToolbar, IonIcon, IonTitle, IonContent } from '@ionic/angular';
+import { DatePipe } from '@angular/common';
 import { Documento } from '../modelos/documento.modelo';
 import { DocumentosService } from '../service/documentos.service';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
@@ -9,7 +10,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
   selector: 'app-detalhes',
   templateUrl: './detalhes.page.html',
   styleUrls: ['./detalhes.page.scss'],
-  imports: [IonHeader, IonMenuButton, IonList, IonItem, IonButtons, IonToolbar, IonIcon, IonTitle, IonContent, NgxExtendedPdfViewerModule],
+  imports: [IonHeader, IonMenuButton, IonList, IonItem, IonButtons, IonToolbar, IonIcon, IonTitle, IonContent, NgxExtendedPdfViewerModule, DatePipe],
 })
 export class DetalhesPage {
 
@@ -18,8 +19,9 @@ export class DetalhesPage {
   private documentosService = inject(DocumentosService)
 
   public documento: any = ""
+  public quantidadePaginas: any;
 
-  id!: number;
+  protected id!: number;
 
   constructor() {
   }
@@ -63,4 +65,9 @@ export class DetalhesPage {
     })
   }
 
+  paginasCarregadas(event: any) {
+  this.quantidadePaginas = event.pagesCount;
+
+  console.log('Quantidade de páginas:', this.quantidadePaginas);
+}
 }
