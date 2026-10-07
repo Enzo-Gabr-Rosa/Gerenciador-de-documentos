@@ -1,22 +1,221 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Detalhes</ion-title>
+
+    <ion-title>
+      <span class="brand-name">BERTOLDI</span>
+      <span class="brand-divider"></span>
+      <span class="page-name">Documentos</span>
+    </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ngx-extended-pdf-viewer src="assets/pdfs/teste_2.pdf" height="65vh" (pagesLoaded)="paginasCarregadas($event)"></ngx-extended-pdf-viewer>
-    <ion-item>
-      Data de criação:
-      {{ documento.dataCriacao | date:'HH:mm - dd/MM/yyyy' }}
-    </ion-item>
-    <ion-item>ID: {{ documento.id }}</ion-item>
-    <ion-item>Nome: {{ documento.nome }}</ion-item>
-    <ion-item>Criador: {{ documento.criador }}</ion-item>
-    <ion-item>Data de criação: {{ documento.dataCriacao }}</ion-item>
-  </ion-list>
+
+  <main class="detalhes-container">
+
+    @if (documento) {
+
+    <!-- Cabeçalho do documento -->
+    <section class="document-header">
+
+      <div class="document-heading">
+
+        <span class="eyebrow">DOCUMENTO</span>
+
+        <h1>{{ documento.nome }}</h1>
+
+        <p class="document-description">
+          Visualização do documento cadastrado no sistema.
+        </p>
+
+      </div>
+
+
+      <div class="document-meta">
+
+        <div class="meta-item">
+          <span>ID</span>
+          <strong>#{{ documento.id }}</strong>
+        </div>
+
+        <div class="meta-item">
+          <span>CRIADOR</span>
+          <strong>{{ documento.criador }}</strong>
+        </div>
+
+        <div class="meta-item">
+          <span>DATA DE CRIAÇÃO</span>
+          <strong>
+            {{ documento.dataCriacao | date:'dd/MM/yyyy' }}
+          </strong>
+        </div>
+
+        <div class="meta-item">
+          <span>PÁGINAS</span>
+          <strong>
+            {{ quantidadePaginas ?? '—' }}
+          </strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Visualizador -->
+    <section class="viewer-section">
+
+      <div class="viewer-header">
+
+        <div>
+          <span class="section-label">ARQUIVO</span>
+
+          <h2>
+            Visualização do documento
+          </h2>
+        </div>
+
+        @if (quantidadePaginas) {
+        <span class="pages">
+          {{ quantidadePaginas }}
+          {{ quantidadePaginas === 1 ? 'página' : 'páginas' }}
+        </span>
+        }
+
+      </div>
+
+
+      <div class="pdf-container">
+
+        <ngx-extended-pdf-viewer [src]="'/api' + documento.arquivoURL.replace('http://localhost:3000', '')"
+          height="70vh" (pdfLoaded)="pdfCarregado($event)">
+        </ngx-extended-pdf-viewer>
+
+      </div>
+
+    </section>
+
+
+    <!-- Informações adicionais -->
+    <section class="information-section">
+
+      <div class="section-label">
+        INFORMAÇÕES
+      </div>
+
+      <div class="information-grid">
+
+        <div class="information-item">
+
+          <span>Nome do documento</span>
+
+          <strong>
+            {{ documento.nome }}
+          </strong>
+
+        </div>
+
+
+        <div class="information-item">
+
+          <span>Criador</span>
+
+          <strong>
+            {{ documento.criador }}
+          </strong>
+
+        </div>
+
+
+        <div class="information-item">
+
+          <span>Data de criação</span>
+
+          <strong>
+            {{ documento.dataCriacao | date:'dd/MM/yyyy HH:mm' }}
+          </strong>
+
+        </div>
+
+
+        <div class="information-item">
+
+          <span>Páginas</span>
+
+          <strong>
+            {{ quantidadePaginas ?? 'Carregando...' }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Ações -->
+    <section class="actions-section">
+
+      <div class="action-description">
+
+        <span class="section-label">
+          AÇÕES
+        </span>
+
+        <p>
+          Exclua este documento caso ele não deva mais permanecer
+          disponível no arquivo.
+        </p>
+
+      </div>
+
+      <ion-button class="delete-button" expand="block" (click)="apagarDocumento()">
+        Apagar documento
+      </ion-button>
+
+    </section>
+
+
+    <!-- URL técnica -->
+    <section class="technical-section">
+
+      <span>LOCALIZAÇÃO DO ARQUIVO</span>
+
+      <code>
+    {{ documento.arquivoURL }}
+  </code>
+
+    </section>
+
+    } @else {
+
+    <!-- Estado de carregamento -->
+    <section class="loading-state">
+
+      <div class="loading-line"></div>
+
+      <span class="eyebrow">
+        DOCUMENTO
+      </span>
+
+      <h1>
+        Documento ainda não carregado
+      </h1>
+
+      <p>
+        Aguarde enquanto as informações do documento são carregadas.
+      </p>
+
+    </section>
+
+    }
+
+  </main>
+
 </ion-content>

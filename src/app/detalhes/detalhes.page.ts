@@ -1,6 +1,17 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonHeader, IonMenuButton, IonList, IonItem, IonButtons, IonToolbar, IonIcon, IonTitle, IonContent } from '@ionic/angular';
+import {
+  IonHeader,
+  IonMenuButton,
+  IonList,
+  IonItem,
+  IonButtons,
+  IonButton,
+  IonToolbar,
+  IonIcon,
+  IonTitle,
+  IonContent
+} from '@ionic/angular';
 import { DatePipe } from '@angular/common';
 import { Documento } from '../modelos/documento.modelo';
 import { DocumentosService } from '../service/documentos.service';
@@ -10,64 +21,98 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
   selector: 'app-detalhes',
   templateUrl: './detalhes.page.html',
   styleUrls: ['./detalhes.page.scss'],
-  imports: [IonHeader, IonMenuButton, IonList, IonItem, IonButtons, IonToolbar, IonIcon, IonTitle, IonContent, NgxExtendedPdfViewerModule, DatePipe],
+  imports: [
+    IonHeader,
+    IonMenuButton,
+    IonList,
+    IonItem,
+    IonButtons,
+    IonButton,
+    IonToolbar,
+    IonIcon,
+    IonTitle,
+    IonContent,
+    NgxExtendedPdfViewerModule,
+    DatePipe
+  ],
 })
 export class DetalhesPage {
 
   private actRoute = inject(ActivatedRoute);
   private router = inject(Router);
-  private documentosService = inject(DocumentosService)
+  private documentosService = inject(DocumentosService);
+  private cdr = inject(ChangeDetectorRef);
 
-  public documento: any = ""
-  public quantidadePaginas: any;
+  public documento?: Documento;
+  public quantidadePaginas?: number;
 
-  protected id!: number;
+  protected id!: string;
 
-  constructor() {
-  }
+  constructor() { }
 
   ionViewWillEnter() {
-    this.obterDocumento()
+    this.obterDocumento();
   }
 
   obterDocumento() {
-    const id = this.actRoute.snapshot.paramMap.get('id'); //Obtem o id
 
-    if (id === null) { //Verifica se veio o id
+    const id = this.actRoute.snapshot.paramMap.get('id');
+
+    if (id === null) {
       console.error('ID não informado');
       alert('ID não informado');
-      this.router.navigate([''])
-      return;
-    }
-    
-    this.id = Number(id); //Salva o id no atributo this.id
-    
-    if (Number.isNaN(this.id)) { //Verifica se é número
-      console.error('ID inválido:', id);
-      this.router.navigate([''])
-      alert('ID inválido:' + id);
+      this.router.navigate(['/home']);
       return;
     }
 
-    console.log('ID recebido:', this.id);
-    console.log("Iniciando requisição...");
+    this.id = id;
 
     this.documentosService.obterDocumento(this.id).subscribe({
+
       next: (resultado: Documento) => {
+
+        console.log('Documento recebido:', resultado);
+
         this.documento = resultado;
-        console.log('Requisição concluída');
-        console.log(this.documento);
+
+        this.cdr.detectChanges();
+
       },
+
       error: (exception) => {
-        console.log("Erro na requisição");
-        console.log(exception);
+
+        console.error('Erro na requisição');
+        console.error(exception);
+
       }
-    })
+
+    });
   }
 
-  paginasCarregadas(event: any) {
-  this.quantidadePaginas = event.pagesCount;
+  pdfCarregado(event: any) {
 
-  console.log('Quantidade de páginas:', this.quantidadePaginas);
+    console.log('PDF carregado:', event);
+    console.log('Quantidade de páginas:', event.pagesCount);
+
+    this.quantidadePaginas = event.pagesCount;
+
+    this.cdr.detectChanges();
+
+  }
+
+  apagarDocumento() {
+  console.log(`Deletando documento de id: ${this.id}`);
+
+  this.documentosService.apagarDocumento(this.id).subscribe({
+    next: (resultado) => {
+      console.log('Documento apagado!');
+      console.log(resultado);
+
+      this.router.navigate(['/home']);
+    },
+    error: (exception) => {
+      console.error('Erro ao apagar documento:', exception);
+    }
+  });
 }
 }

@@ -1,0 +1,600 @@
+:host {
+  --background: #f7f6f2;
+
+  display: block;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+ion-header {
+  box-shadow: none;
+}
+
+ion-toolbar {
+  --background: #f7f6f2;
+  --border-width: 0;
+  --min-height: 76px;
+
+  padding: 0 5%;
+
+  color: #191919;
+}
+
+ion-menu-button {
+  --color: #191919;
+
+  margin-right: 12px;
+}
+
+ion-title {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.brand-name {
+  font-size: 15px;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+}
+
+.brand-divider {
+  width: 1px;
+  height: 18px;
+
+  background: #c8c3b8;
+}
+
+.page-name {
+  color: #77736c;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+ion-content {
+  --background: #f7f6f2;
+}
+
+.adicionar-container {
+  width: min(1000px, 90%);
+
+  margin: 0 auto;
+
+  padding: 65px 0 100px;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+   ========================================================= */
+
+.page-heading {
+  padding-bottom: 55px;
+
+  border-bottom: 1px solid #d9d5cc;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: #8b857a;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.22em;
+}
+
+.page-heading h1 {
+  margin: 0;
+
+  color: #171717;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: clamp(42px, 5vw, 64px);
+
+  font-weight: 400;
+
+  line-height: 1.05;
+}
+
+.page-heading p {
+  max-width: 620px;
+
+  margin: 20px 0 0;
+
+  color: #77736c;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   FORM SECTIONS
+   ========================================================= */
+
+.form-section,
+.file-section,
+.actions-section {
+  padding: 45px 0;
+
+  border-bottom: 1px solid #d9d5cc;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.section-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #9a958c;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+}
+
+.section-heading h2 {
+  margin: 0;
+
+  color: #292929;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 25px;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   FORM FIELDS
+   ========================================================= */
+
+.form-fields {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 30px;
+}
+
+.field {
+  min-width: 0;
+}
+
+
+/*
+ * Ionic continua cuidando da funcionalidade do input,
+ * mas visualmente ele passa a seguir o restante do sistema.
+ */
+
+ion-input {
+  --background: #fff;
+
+  --border-color: #d5d1c9;
+  --border-width: 1px;
+  --border-style: solid;
+
+  --border-radius: 0;
+
+  --padding-start: 17px;
+  --padding-end: 17px;
+
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+
+  --color: #302e2b;
+  --placeholder-color: #aaa49a;
+
+  --highlight-color-focused: #9b7b43;
+
+  min-height: 68px;
+
+  font-size: 13px;
+}
+
+ion-input::part(label) {
+  margin-bottom: 8px;
+
+  color: #706b63;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   FILE UPLOAD
+   ========================================================= */
+
+.file-upload {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  min-height: 105px;
+
+  padding: 20px 22px;
+
+  border: 1px dashed #c9c4ba;
+
+  background: rgba(255, 255, 255, 0.45);
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.file-upload:hover {
+  border-color: #9b7b43;
+
+  background: #fff;
+
+  transform: translateY(-1px);
+}
+
+
+/*
+ * O input continua existindo e continua acionando
+ * selecionarPDF($event), mas fica invisível.
+ */
+
+.file-upload input[type='file'] {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.upload-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 48px;
+  height: 48px;
+
+  border: 1px solid #d2cdc4;
+
+  color: #706b63;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.upload-content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  flex: 1;
+}
+
+.upload-content strong {
+  color: #35322e;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.upload-content span {
+  color: #8b867d;
+
+  font-size: 12px;
+}
+
+.upload-action {
+  color: #5f5a53;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.file-help {
+  margin-top: 12px;
+
+  color: #9a958c;
+
+  font-size: 10px;
+}
+
+/* =========================================================
+   ARQUIVO SELECIONADO
+   ========================================================= */
+
+.selected-file {
+  margin-top: 18px;
+
+  padding: 18px 20px;
+
+  border-left: 2px solid #9b7b43;
+  border-top: 1px solid #dedad2;
+  border-right: 1px solid #dedad2;
+  border-bottom: 1px solid #dedad2;
+
+  background: #fff;
+}
+
+.selected-file-label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #9a958c;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+}
+
+.selected-file-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.selected-file-name {
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: #35322e;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 15px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selected-file-size {
+  flex-shrink: 0;
+
+  color: #8b867d;
+
+  font-family: 'Courier New', monospace;
+
+  font-size: 10px;
+}
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.actions-section {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  padding-bottom: 0;
+
+  border-bottom: none;
+}
+
+.action-description {
+  max-width: 400px;
+}
+
+.action-description p {
+  margin: 0;
+
+  color: #77736c;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/*
+ * Sobrescrevemos o visual padrão do Ionic.
+ */
+
+.submit-button {
+  width: 230px;
+
+  margin: 0;
+}
+
+.submit-button::part(native) {
+  min-height: 52px;
+
+  border-radius: 0;
+
+  background: #262626;
+
+  color: #fff;
+
+  box-shadow: none;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 0.03em;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.submit-button:hover::part(native) {
+  background: #9b7b43;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+  .adicionar-container {
+    padding-top: 45px;
+  }
+
+  .form-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .actions-section {
+    align-items: stretch;
+    flex-direction: column;
+
+    gap: 25px;
+  }
+
+  .submit-button {
+    width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  ion-toolbar {
+    --min-height: 64px;
+
+    padding: 0 4%;
+  }
+
+  .brand-divider,
+  .page-name {
+    display: none;
+  }
+
+  .brand-name {
+    font-size: 13px;
+  }
+
+  .adicionar-container {
+    width: 90%;
+  }
+
+  .page-heading h1 {
+    font-size: 42px;
+  }
+
+  .page-heading {
+    padding-bottom: 40px;
+  }
+
+  .form-section,
+  .file-section,
+  .actions-section {
+    padding: 35px 0;
+  }
+
+  .section-heading h2 {
+    font-size: 22px;
+  }
+
+  .file-upload {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+
+    padding: 18px;
+  }
+
+  .upload-content {
+    min-width: 150px;
+  }
+
+  .upload-action {
+    width: 100%;
+
+    margin-left: 68px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .page-heading h1 {
+    font-size: 36px;
+  }
+
+  .upload-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .upload-content strong {
+    font-size: 14px;
+  }
+
+  .upload-content span {
+    font-size: 11px;
+  }
+
+}

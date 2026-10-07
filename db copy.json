@@ -6,7 +6,7 @@
       "criador": "Otto",
       "dataCriacao": "2026-09-21T18:15:00.000Z",
       "ativo": true,
-      "imageURL": "https://placehold.co/600x400?text=Programacao"
+      "arquivoURL": "https://placehold.co/600x400?text=Programacao"
     },
     {
       "id": "3",
@@ -14,7 +14,7 @@
       "criador": "Maria",
       "dataCriacao": "2026-09-22T10:00:00.000Z",
       "ativo": true,
-      "imageURL": "https://placehold.co/600x400?text=Quimica"
+      "arquivoURL": "https://placehold.co/600x400?text=Quimica"
     },
     {
       "id": "4",
@@ -22,7 +22,7 @@
       "criador": "João",
       "dataCriacao": "2026-09-23T16:45:00.000Z",
       "ativo": true,
-      "imageURL": "https://placehold.co/600x400?text=Documentacao"
+      "arquivoURL": "https://placehold.co/600x400?text=Documentacao"
     },
     {
       "id": "5",
@@ -30,7 +30,16 @@
       "criador": "Ana",
       "dataCriacao": "2026-09-24T09:20:00.000Z",
       "ativo": true,
-      "imageURL": "https://placehold.co/600x400?text=Planejamento"
+      "arquivoURL": "https://placehold.co/600x400?text=Planejamento"
+    },
+    {
+      "id": "_nFVwlHzA5M",
+      "nome": "Teste_3",
+      "criador": "Otto",
+      "dataCriacao": "2026-10-05T22:21:22.593Z",
+      "dataApagamento": null,
+      "ativo": true,
+      "arquivoURL": "http://localhost:3000/pdfs/teste_3.pdf"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

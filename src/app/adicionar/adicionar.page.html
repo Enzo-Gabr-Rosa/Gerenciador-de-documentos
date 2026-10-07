@@ -1,9 +1,186 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Adicionar</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>
+      <span class="brand-name">BERTOLDI</span>
+      <span class="brand-divider"></span>
+      <span class="page-name">Documentos</span>
+    </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
-  
+
+  <main class="adicionar-container">
+
+    <!-- Cabeçalho -->
+    <section class="page-heading">
+
+      <span class="eyebrow">
+        GESTÃO DOCUMENTAL
+      </span>
+
+      <h1>
+        Novo documento
+      </h1>
+
+      <p>
+        Adicione um novo documento ao arquivo do escritório.
+        Preencha as informações e selecione o arquivo correspondente.
+      </p>
+
+    </section>
+
+
+    <!-- Formulário -->
+    <section class="form-section">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="section-label">
+            INFORMAÇÕES
+          </span>
+
+          <h2>
+            Dados do documento
+          </h2>
+        </div>
+
+      </div>
+
+
+      <div class="form-fields">
+
+        <!-- Nome -->
+        <div class="field">
+
+          <ion-input [(ngModel)]="nome" label="Nome do documento" labelPlacement="stacked"
+            placeholder="Digite o nome do documento">
+          </ion-input>
+
+        </div>
+
+
+        <!-- Criador -->
+        <div class="field">
+
+          <ion-input [(ngModel)]="criador" label="Criador" labelPlacement="stacked"
+            placeholder="Digite o nome do responsável">
+          </ion-input>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Arquivo -->
+    <section class="file-section">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="section-label">
+            ARQUIVO
+          </span>
+
+          <h2>
+            Documento PDF
+          </h2>
+        </div>
+
+      </div>
+
+
+      <label class="file-upload">
+
+        <input #arquivoInput type="file" accept="application/pdf" (change)="selecionarPDF($event)">
+
+        <div class="upload-icon">
+          +
+        </div>
+
+        <div class="upload-content">
+
+          <strong>
+            Selecionar documento
+          </strong>
+
+          <span>
+            Escolha um arquivo PDF do seu computador
+          </span>
+
+        </div>
+
+        <span class="upload-action">
+          Procurar
+        </span>
+
+      </label>
+
+      @if (arquivo) {
+
+      <div class="selected-file">
+
+        <span class="selected-file-label">
+          ARQUIVO SELECIONADO
+        </span>
+
+        <div class="selected-file-info">
+
+          <span class="selected-file-name">
+            {{ arquivo.name }}
+          </span>
+
+          <span class="selected-file-size">
+            {{ (arquivo.size / 1024 / 1024).toFixed(2) }} MB
+          </span>
+
+        </div>
+
+      </div>
+
+      }
+
+
+      <div class="file-help">
+        Formato aceito: PDF
+      </div>
+
+    </section>
+
+
+    <!-- Ações -->
+    <section class="actions-section">
+
+      <div class="action-description">
+
+        <span class="section-label">
+          FINALIZAR
+        </span>
+
+        <p>
+          Confira as informações antes de adicionar o documento
+          ao arquivo.
+        </p>
+
+      </div>
+
+
+      <ion-button class="submit-button" expand="block" (click)="adicionarDocumento()">
+        Adicionar documento
+      </ion-button>
+
+    </section>
+
+  </main>
+
 </ion-content>

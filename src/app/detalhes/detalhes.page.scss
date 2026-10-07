@@ -1,0 +1,632 @@
+:host {
+  --background: #f7f6f2;
+
+  display: block;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+ion-header {
+  box-shadow: none;
+}
+
+ion-toolbar {
+  --background: #f7f6f2;
+  --border-width: 0;
+  --min-height: 76px;
+
+  padding: 0 5%;
+
+  color: #191919;
+}
+
+ion-menu-button {
+  --color: #191919;
+
+  margin-right: 12px;
+}
+
+ion-title {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.brand-name {
+  font-size: 15px;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+}
+
+.brand-divider {
+  width: 1px;
+  height: 18px;
+
+  background: #c8c3b8;
+}
+
+.page-name {
+  color: #77736c;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+ion-content {
+  --background: #f7f6f2;
+}
+
+.detalhes-container {
+  width: min(1400px, 90%);
+
+  margin: 0 auto;
+
+  padding: 65px 0 100px;
+}
+
+
+/* =========================================================
+   DOCUMENT HEADER
+   ========================================================= */
+
+.document-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 70px;
+
+  padding-bottom: 50px;
+
+  border-bottom: 1px solid #d9d5cc;
+}
+
+.document-heading {
+  max-width: 700px;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: #8b857a;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.22em;
+}
+
+.document-heading h1 {
+  margin: 0;
+
+  color: #171717;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: clamp(38px, 5vw, 64px);
+
+  font-weight: 400;
+
+  line-height: 1.05;
+}
+
+.document-description {
+  margin: 20px 0 0;
+
+  color: #77736c;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   METADATA
+   ========================================================= */
+
+.document-meta {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(100px, 1fr));
+
+  min-width: 360px;
+
+  border-top: 1px solid #d9d5cc;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  padding: 17px 18px;
+
+  border-bottom: 1px solid #d9d5cc;
+}
+
+.meta-item:nth-child(odd) {
+  border-right: 1px solid #d9d5cc;
+}
+
+.meta-item span {
+  color: #9a958c;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+.meta-item strong {
+  color: #393632;
+
+  font-size: 12px;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   VIEWER
+   ========================================================= */
+
+.viewer-section {
+  margin-top: 55px;
+}
+
+.viewer-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.section-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #9a958c;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+}
+
+.viewer-header h2 {
+  margin: 0;
+
+  color: #292929;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.pages {
+  color: #77736c;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   PDF
+   ========================================================= */
+
+.pdf-container {
+  overflow: hidden;
+
+  border: 1px solid #d9d5cc;
+
+  background: #fff;
+
+  box-shadow:
+    0 10px 35px rgba(30, 28, 24, 0.05);
+}
+
+ngx-extended-pdf-viewer {
+  display: block;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   INFORMATION
+   ========================================================= */
+
+.information-section {
+  margin-top: 60px;
+
+  padding-top: 30px;
+
+  border-top: 1px solid #d9d5cc;
+}
+
+.information-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  border-top: 1px solid #e0dcd4;
+}
+
+.information-item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+
+  min-height: 100px;
+
+  padding: 20px;
+
+  border-right: 1px solid #e0dcd4;
+}
+
+.information-item:last-child {
+  border-right: none;
+}
+
+.information-item span {
+  color: #9a958c;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.information-item strong {
+  color: #4a4640;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.actions-section {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  margin-top: 50px;
+
+  padding: 40px 0;
+
+  border-top: 1px solid #d9d5cc;
+  border-bottom: 1px solid #d9d5cc;
+}
+
+.action-description {
+  max-width: 400px;
+}
+
+.action-description p {
+  margin: 0;
+
+  color: #77736c;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+.delete-button {
+  width: 230px;
+
+  margin: 0;
+}
+
+.delete-button::part(native) {
+  min-height: 52px;
+
+  border: 1px solid #a54b43;
+
+  border-radius: 0;
+
+  background: transparent;
+
+  color: #8f3f38;
+
+  box-shadow: none;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 0.03em;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.delete-button:hover::part(native) {
+  background: #8f3f38;
+
+  color: #fff;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   TECHNICAL INFORMATION
+   ========================================================= */
+
+.technical-section {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  margin-top: 35px;
+
+  padding: 22px;
+
+  border: 1px solid #dedad2;
+
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.technical-section > span {
+  color: #9a958c;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+.technical-section code {
+  overflow: hidden;
+
+  color: #6d6860;
+
+  font-family: 'Courier New', monospace;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  padding: 100px 0;
+}
+
+.loading-line {
+  width: 45px;
+  height: 1px;
+
+  margin-bottom: 45px;
+
+  background: #9b7b43;
+}
+
+.loading-state h1 {
+  margin: 0;
+
+  color: #292929;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.loading-state p {
+  margin-top: 15px;
+
+  color: #77736c;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .document-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 40px;
+  }
+
+  .document-meta {
+    width: 100%;
+
+    min-width: 0;
+  }
+
+  .information-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .information-item:nth-child(2) {
+    border-right: none;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  ion-toolbar {
+    --min-height: 64px;
+
+    padding: 0 4%;
+  }
+
+  .brand-divider,
+  .page-name {
+    display: none;
+  }
+
+  .brand-name {
+    font-size: 13px;
+  }
+
+  .detalhes-container {
+    width: 90%;
+
+    padding-top: 45px;
+  }
+
+  .document-header {
+    padding-bottom: 35px;
+  }
+
+  .document-heading h1 {
+    font-size: 42px;
+
+    line-height: 1.08;
+  }
+
+  .document-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .meta-item {
+    padding: 14px;
+  }
+
+  .viewer-section {
+    margin-top: 40px;
+  }
+
+  .viewer-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .viewer-header h2 {
+    font-size: 22px;
+  }
+
+  .pdf-container {
+    margin-left: -5.5%;
+    margin-right: -5.5%;
+  }
+
+  .information-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .information-item {
+    border-right: none;
+
+    border-bottom: 1px solid #e0dcd4;
+  }
+
+  .information-item:last-child {
+    border-bottom: none;
+  }
+
+
+  /* Ações */
+
+  .actions-section {
+    align-items: stretch;
+    flex-direction: column;
+
+    gap: 25px;
+
+    margin-top: 40px;
+
+    padding: 35px 0;
+  }
+
+  .delete-button {
+    width: 100%;
+  }
+
+
+  /* URL técnica */
+
+  .technical-section {
+    overflow: hidden;
+  }
+
+}
+
+
+@media (max-width: 420px) {
+
+  .detalhes-container {
+    width: 92%;
+  }
+
+  .document-heading h1 {
+    font-size: 36px;
+  }
+
+  .document-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .meta-item {
+    border-right: none !important;
+  }
+
+  .action-description {
+    max-width: 100%;
+  }
+
+}

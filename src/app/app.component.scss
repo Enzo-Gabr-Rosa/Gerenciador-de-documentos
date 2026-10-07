@@ -1,0 +1,249 @@
+:host {
+  --background: #f7f6f2;
+}
+
+
+/* =========================================================
+   MENU
+   ========================================================= */
+
+ion-menu {
+  --width: 310px;
+  --background: #f7f6f2;
+
+  --border: 1px solid #d9d5cc;
+}
+
+
+/* =========================================================
+   HEADER DO MENU
+   ========================================================= */
+
+ion-menu ion-header {
+  box-shadow: none;
+}
+
+ion-menu ion-toolbar {
+  --background: #f7f6f2;
+
+  --border-width: 0;
+
+  height: 120px;
+
+  padding: 0 30px;
+
+  display: flex;
+  align-items: center;
+}
+
+.menu-brand {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.brand-name {
+  color: #1d1d1b;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 22px;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+}
+
+.brand-subtitle {
+  color: #8b857a;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   CONTEÚDO
+   ========================================================= */
+
+ion-menu ion-content {
+  --background: #f7f6f2;
+
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+
+  min-height: calc(100% - 120px);
+
+  padding: 15px 30px 30px;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.menu-label {
+  display: block;
+
+  margin-bottom: 22px;
+
+  color: #9a958c;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+}
+
+
+/* =========================================================
+   NAVEGAÇÃO
+   ========================================================= */
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation-item {
+  display: grid;
+
+  grid-template-columns: 35px 1fr 25px;
+
+  align-items: center;
+
+  min-height: 66px;
+
+  border-top: 1px solid #dedad2;
+
+  color: #393632;
+
+  text-decoration: none;
+
+  transition:
+    padding 180ms ease,
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.navigation-item:last-child {
+  border-bottom: 1px solid #dedad2;
+}
+
+.navigation-item:hover {
+  padding-left: 8px;
+
+  color: #9b7b43;
+}
+
+.navigation-number {
+  color: #a49f96;
+
+  font-family: 'Courier New', monospace;
+
+  font-size: 10px;
+}
+
+.navigation-text {
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 15px;
+}
+
+.navigation-arrow {
+  color: #aaa49b;
+
+  font-size: 15px;
+
+  text-align: right;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.navigation-item:hover .navigation-arrow {
+  color: #9b7b43;
+
+  transform: translateX(4px);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.menu-footer {
+  margin-top: auto;
+
+  padding-top: 50px;
+}
+
+.footer-line {
+  width: 35px;
+  height: 1px;
+
+  margin-bottom: 20px;
+
+  background: #9b7b43;
+}
+
+.footer-title {
+  display: block;
+
+  color: #77736c;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+}
+
+.menu-footer p {
+  max-width: 210px;
+
+  margin: 10px 0 0;
+
+  color: #9a958c;
+
+  font-size: 11px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   SPLIT PANE
+   ========================================================= */
+
+ion-split-pane {
+  --side-width: 310px;
+  --side-max-width: 310px;
+
+  --border: none;
+
+  background: #f7f6f2;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  ion-menu {
+    --width: min(310px, 85vw);
+  }
+
+}

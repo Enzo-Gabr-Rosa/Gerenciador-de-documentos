@@ -1,41 +1,191 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    
+
     <ion-title (click)="obterDocumentosAtivos()">
-      Listagem de documentos
+      <span class="brand-name">BERTOLDI</span>
+      <span class="brand-divider"></span>
+      <span class="page-name">Documentos</span>
     </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content [fullscreen]="true">
-  @if (documentos.length === 0){
-    <h1>Sem documentos</h1>
-  } @else {
 
-    <ion-grid>
-      <ion-row>
-        <ion-col><strong>ID</strong></ion-col>
-        <ion-col><strong>Nome</strong></ion-col>
-        <ion-col><strong>Criador</strong></ion-col>
-        <ion-col><strong>Data</strong></ion-col>
-        <ion-col><strong>Imagem</strong></ion-col>
-        <ion-col><strong>Apagar</strong></ion-col>
-      </ion-row>
-      @for (doc of documentos; track doc.id){
-          <ion-row>
-            <ion-col>{{ doc.id }}</ion-col>
-            <ion-col>{{ doc.nome }}</ion-col>
-            <ion-col>{{ doc.criador }}</ion-col>
-            <ion-col>{{ doc.dataCriacao }}</ion-col>
-            <ion-col>Imagem</ion-col>
-            <ion-col><ion-icon class="trash" name="expand-outline" [routerLink]="['/detalhes', doc.id]"></ion-icon></ion-col>
-          </ion-row>
-      }
-    </ion-grid>
-  }
-  </ion-content>
-  
+  <main class="documentos-container">
+
+    <!-- Cabeçalho da página -->
+    <section class="page-heading">
+
+      <div>
+        <span class="eyebrow">GESTÃO DOCUMENTAL</span>
+
+        <h1>Documentos</h1>
+
+        <p>
+          Consulte e organize os documentos do escritório.
+        </p>
+      </div>
+
+      <a
+        class="new-document"
+        routerLink="/adicionar"
+      >
+        <span>+</span>
+        Novo documento
+      </a>
+
+    </section>
+
+
+    <!-- Conteúdo -->
+    @if (documentos.length === 0) {
+
+      <section class="empty-state">
+
+        <div class="empty-icon">
+          <span>—</span>
+        </div>
+
+        <h2>Nenhum documento encontrado</h2>
+
+        <p>
+          Ainda não existem documentos disponíveis no sistema.
+        </p>
+
+        <a
+          class="empty-action"
+          routerLink="/adicionar"
+        >
+          Adicionar primeiro documento
+        </a>
+
+      </section>
+
+    } @else {
+
+      <section class="documents-section">
+
+        <div class="section-header">
+          <div>
+            <span class="section-label">ARQUIVO</span>
+            <h2>Documentos cadastrados</h2>
+          </div>
+
+          <span class="document-count">
+            {{ documentos.length }}
+            {{ documentos.length === 1 ? 'documento' : 'documentos' }}
+          </span>
+        </div>
+
+
+        <!-- Desktop -->
+        <div class="documents-table">
+
+          <div class="table-header">
+            <span>ID</span>
+            <span>Documento</span>
+            <span>Criador</span>
+            <span>Data de criação</span>
+            <span></span>
+          </div>
+
+
+          @for (doc of documentos; track doc.id) {
+
+            <div class="document-row">
+
+              <span class="document-id">
+                #{{ doc.id }}
+              </span>
+
+              <span class="document-name">
+                {{ doc.nome }}
+              </span>
+
+              <span class="document-creator">
+                {{ doc.criador }}
+              </span>
+
+              <span class="document-date">
+                {{ doc.dataCriacao }}
+              </span>
+
+              <a
+                class="document-action"
+                [routerLink]="['/detalhes', doc.id]"
+                aria-label="Abrir documento"
+              >
+                <span>Visualizar</span>
+
+                <ion-icon name="expand-outline"></ion-icon>
+              </a>
+
+            </div>
+
+          }
+
+        </div>
+
+
+        <!-- Mobile -->
+        <div class="documents-mobile">
+
+          @for (doc of documentos; track doc.id) {
+
+            <article class="document-card">
+
+              <div class="card-top">
+
+                <span class="document-id">
+                  #{{ doc.id }}
+                </span>
+
+                <a
+                  class="card-action"
+                  [routerLink]="['/detalhes', doc.id]"
+                  aria-label="Abrir documento"
+                >
+                  <ion-icon name="expand-outline"></ion-icon>
+                </a>
+
+              </div>
+
+
+              <h3>
+                {{ doc.nome }}
+              </h3>
+
+
+              <div class="card-info">
+
+                <div>
+                  <span>Criador</span>
+                  <strong>{{ doc.criador }}</strong>
+                </div>
+
+                <div>
+                  <span>Data</span>
+                  <strong>{{ doc.dataCriacao }}</strong>
+                </div>
+
+              </div>
+
+            </article>
+
+          }
+
+        </div>
+
+      </section>
+
+    }
+
+  </main>
+
+</ion-content>

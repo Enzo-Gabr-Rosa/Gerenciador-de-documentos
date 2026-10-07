@@ -1,9 +1,9 @@
 export interface Documento {
-  id: number;
+  id?: string;
   nome: string;
   criador: string; //Trocar para id do usuario futuramente
   dataCriacao: Date;
-  dataApagamento: Date;
+  dataApagamento: Date | null;
   ativo: boolean;
-  imageURL: string;
+  arquivoURL: string;
 }

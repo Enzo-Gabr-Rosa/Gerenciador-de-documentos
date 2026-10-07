@@ -1,31 +1,47 @@
-import { inject, Service } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Documento } from '../modelos/documento.modelo';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { retry } from 'rxjs';
 
-@Service()
+@Injectable({
+  providedIn: 'root'
+})
 export class DocumentosService {
-  private documentos: Documento[] = [];
-  private http = inject(HttpClient);
-  private api = environment.api
 
-  constructor() {
-  }
+  private documentos: Documento[] = [];
+
+  private http = inject(HttpClient);
+
+  private api = environment.api;
+
+  constructor() {}
 
   obterDocumetos() {
-    return this.http.get<Documento[]>(this.api + "/documentos");
+    return this.http.get<Documento[]>(
+      `${this.api}/documentos`
+    );
   }
 
-  apagarDocumento(id: number) {
-    return this.http.patch<Documento>(`${this.api}/documentos/${id}`, {
-      ativo: false
-    })
+  obterDocumento(id: string) {
+    return this.http.get<Documento>(
+      `${this.api}/documentos/${id}`
+    );
   }
 
-  obterDocumento(id: number){
-    
-    return this.http.get<Documento>(`${this.api}/documentos/${id}`)
+  adicionarDocumento(documento: Documento) {
+    return this.http.post<Documento>(
+      `${this.api}/documentos`,
+      documento
+    );
+  }
 
+  apagarDocumento(id: string) {
+    return this.http.patch<Documento>(
+      `${this.api}/documentos/${id}`,
+      {
+        ativo: false,
+        dataApagamento: new Date()
+      }
+    );
   }
 }

@@ -5,6 +5,7 @@ import { IonApp, IonMenu, IonButtons, IonButton, IonSplitPane, IonHeader, IonToo
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
+  styleUrls: ['./app.component.scss'],
   imports: [IonApp, IonMenu, IonButtons, IonButton, IonSplitPane, IonHeader, IonToolbar, IonTitle, IonContent, IonRouterOutlet, IonRouterLink, RouterLink],
 })
 export class AppComponent {

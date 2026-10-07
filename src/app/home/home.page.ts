@@ -23,6 +23,10 @@ export class HomePage {
     this.obterDocumentosAtivos();
   }
 
+  ionViewWillEnter(){
+    this.obterDocumentosAtivos();
+  }
+
   async obterDocumentosAtivos() {
     console.log('Tentativa de requisição');
 
@@ -43,7 +47,7 @@ export class HomePage {
     })
   }
 
-  async apagarDocumento(id: number){
+  async apagarDocumento(id: string){
     console.log(`Deletando documento de id : ${id}`);
     this.documetosService.apagarDocumento(id).subscribe({
       next: (resultado) => {
